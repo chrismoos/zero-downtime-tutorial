@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: myapp-proxy
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+  template:
+    metadata:
+      labels:
+        app: myapp-proxy
+    spec:
+      containers:
+      - name: haproxy
+        image: chrismoos/zero-downtime-tutorial-proxy
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

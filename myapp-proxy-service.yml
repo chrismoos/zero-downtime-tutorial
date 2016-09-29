@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: myapp-proxy
+spec:
+  selector:
+    app: myapp-proxy
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30301
+  type: NodePort
